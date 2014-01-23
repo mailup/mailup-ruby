@@ -4,7 +4,13 @@ A Ruby gem for interacting with the MailUp REST API.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Install the gem directly:
+
+```ruby
+gem install mailup
+```
+
+Or, add this line to your application's Gemfile:
 
 ```ruby
 gem 'mailup'
