@@ -37,7 +37,7 @@ credentials = {
   }
 }
 
-mailup = MailUp::Api.new(credentials)
+mailup = MailUp::API.new(credentials)
 ```
 
 ### Console Methods
