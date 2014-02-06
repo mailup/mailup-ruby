@@ -33,7 +33,7 @@ module MailUp
       #     :Email => "joe@public.com"
       #   }
       #   updated_recipient = mailup.console.recipient.update(recipient)
-      #   updated_recipient.Name
+      #   updated_recipient['Name']
       #   => "Joe Public"
       #
       def update(recipient)
