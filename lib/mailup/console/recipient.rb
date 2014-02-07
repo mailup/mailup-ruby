@@ -29,8 +29,9 @@ module MailUp
       # @example
       #
       #   recipient = {
-      #     :Name => "Joe Public",
-      #     :Email => "joe@public.com"
+      #     idRecipient: "1234"
+      #     Name: "Joe Public",
+      #     Email: "joe@public.com"
       #   }
       #   updated_recipient = mailup.console.recipient.update(recipient)
       #   updated_recipient['Name']
