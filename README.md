@@ -2,6 +2,8 @@
 
 A Ruby gem for interacting with the MailUp REST API.
 
+[![Build Status](https://travis-ci.org/mailup/mailup-ruby.svg)](https://travis-ci.org/mailup/mailup-ruby)
+
 ## Installation
 
 Install the gem directly:
