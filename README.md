@@ -5,6 +5,7 @@ A Ruby gem for interacting with the MailUp REST API.
 [![Build Status](https://travis-ci.org/mailup/mailup-ruby.svg)](https://travis-ci.org/mailup/mailup-ruby)
 [![Coverage Status](https://img.shields.io/coveralls/mailup/mailup-ruby.svg)](https://coveralls.io/r/mailup/mailup-ruby)
 [![Code Climate](https://codeclimate.com/github/mailup/mailup-ruby/badges/gpa.svg)](https://codeclimate.com/github/mailup/mailup-ruby)
+[![Dependency Status](https://gemnasium.com/mailup/mailup-ruby.svg)](https://gemnasium.com/mailup/mailup-ruby)
 ## Installation
 
 Install the gem directly:
