@@ -16,7 +16,7 @@ describe MailUp::Console do
     context resource do
       it "should return a #{resource} object" do
         test = @mailup.console.send(resource.to_sym)
-        test.should be_an_instance_of(Object.const_get "MailUp::Console::#{resource.capitalize}")
+        test.should be_an_instance_of(Object.const_get("MailUp").const_get("Console").const_get("#{resource.capitalize}"))
       end
     end
   end
@@ -25,7 +25,7 @@ describe MailUp::Console do
     context resource do
       it "should return a #{resource} object" do
         test = @mailup.console.send(resource.to_sym, 1)
-        test.should be_an_instance_of(Object.const_get "MailUp::Console::#{resource.capitalize}")
+        test.should be_an_instance_of(Object.const_get("MailUp").const_get("Console").const_get("#{resource.capitalize}"))
       end
     end
   end

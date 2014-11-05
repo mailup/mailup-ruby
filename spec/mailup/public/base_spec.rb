@@ -15,7 +15,7 @@ describe MailUp::Public do
     context resource do
       it "should return a #{resource} object" do
         test = @mailup.public.send(resource.to_sym)
-        test.should be_an_instance_of(Object.const_get "MailUp::Public::#{resource.capitalize}")
+        test.should be_an_instance_of(Object.const_get("MailUp").const_get("Public").const_get("#{resource.capitalize}"))
       end
     end
   end
