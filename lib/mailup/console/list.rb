@@ -256,13 +256,14 @@ module MailUp
       #   * MobilePrefix [String]
       #   * MobileNumber [String]
       #   * Fields [Array]
+      # @option params [Boolean] :ConfirmEmail Confirmed opt-in option. Default false.
       #
       # @return [Integer] The number of imported recipients.
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-AsyncImportRecipientsToList
       #
-      def import_recipients(recipients)
-        @api.post("#{@api.path}/List/#{@id}/Recipients", body: recipients)
+      def import_recipients(recipients, params = {})
+        @api.post("#{@api.path}/List/#{@id}/Recipients", {params: params, body: recipients})
       end
 
       # Subscribe a recipient from the specified list.

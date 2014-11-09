@@ -59,12 +59,25 @@ describe MailUp::Console::List do
 
   # POST requests
 
-  %w(add_group import_recipients).each do |method|
+  %w(add_group).each do |method|
     it "should fire the correct POST request for #{method}" do
       payload = Date._jisx0301("empty hash, please")
       @mailup.console.list(1).api.should_receive(:post).with("#{@mailup.console.list(1).api.path}/List/1/#{method.split('_').last.capitalize}", {body: payload})
       @mailup.console.list(1).send(method.to_sym, payload)
     end
+  end
+
+  it "should fire the correct POST request for import_recipients" do
+    payload = Date._jisx0301("empty hash, please")
+    @mailup.console.list(1).api.should_receive(:post).with("#{@mailup.console.list(1).api.path}/List/1/Recipients", {body: payload, params: {}})
+    @mailup.console.list(1).send(:import_recipients, payload)
+  end
+
+  it "should fire the correct POST request for import_recipients and email optin" do
+    payload = Date._jisx0301("empty hash, please")
+    @mailup.console.list(1).api.should_receive(:post).with("#{@mailup.console.list(1).api.path}/List/1/Recipients",
+      {body: payload, params: {ConfirmEmail: true}})
+    @mailup.console.list(1).send(:import_recipients, payload, {ConfirmEmail: true})
   end
 
   it "should fire the correct POST request for subscribe" do
