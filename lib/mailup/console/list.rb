@@ -25,7 +25,7 @@ module MailUp
       #   * TotalElementsCount [Integer]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-GetConsoleGroupsByList
-      # 
+      #
       # @example
       #
       #   list = mailup.console.list(2)
@@ -38,7 +38,7 @@ module MailUp
       def groups(params = {})
         @api.get("#{@api.path}/List/#{@id}/Groups", params: params)
       end
-      
+
       # Create a new group for the specified list.
       #
       # @param [Hash] group A hash of group attributes.
@@ -54,7 +54,7 @@ module MailUp
       #   * Deletable [Boolean]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-CreateGroup
-      # 
+      #
       # @example
       #
       #   group = {
@@ -69,7 +69,7 @@ module MailUp
       def add_group(group)
         @api.post("#{@api.path}/List/#{@id}/Group", body: group)
       end
-      
+
       # Update a group for the specified list.
       #
       # @param [Hash] group A hash of group attributes.
@@ -85,7 +85,7 @@ module MailUp
       #   * Deletable [Boolean]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-UpdateGroup
-      # 
+      #
       # @example
       #
       #   group = {
@@ -100,7 +100,7 @@ module MailUp
       def update_group(group_id, group)
         @api.put("#{@api.path}/List/#{@id}/Group/#{group_id}", body: group)
       end
-      
+
       # Delete a group from the specified list.
       #
       # @param [Integer] group_id The ID of the group to delete.
@@ -136,7 +136,7 @@ module MailUp
       #   * TotalElementsCount [Integer]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-GetConsoleGroupsByRecipient
-      # 
+      #
       # @example
       #
       #   groups = mailup.console.list(2).recipient_groups(5)
@@ -150,7 +150,7 @@ module MailUp
       def recipient_groups(recipient_id, params = {})
         @api.get("#{@api.path}/List/#{@id}/Recipient/#{recipient_id}/Groups", params: params)
       end
-      
+
       # Retrieve pending recipients in the specified list.
       #
       # @param [Hash] params Optional params or filters:
@@ -168,7 +168,7 @@ module MailUp
       #   * TotalElementsCount [Integer]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-GetPendingRecipientsByList
-      # 
+      #
       # @example
       #
       #   pending = mailup.console.list(2).pending
@@ -182,7 +182,7 @@ module MailUp
       def pending(params = {})
         @api.get("#{@api.path}/List/#{@id}/Recipients/Pending", params: params)
       end
-      
+
       # Retrieve subscribed recipients in the specified list.
       #
       # @param [Hash] params Optional params or filters:
@@ -200,7 +200,7 @@ module MailUp
       #   * TotalElementsCount [Integer]
       #
       # @see http://help.mailup.com/display/mailupapi/Admin+Console+Methods#AdminConsoleMethods-GetSubscribedRecipientsByList
-      # 
+      #
       # @example
       #
       #   subscribed = mailup.console.list(2).subscribed
@@ -214,7 +214,7 @@ module MailUp
       def subscribed(params = {})
         @api.get("#{@api.path}/List/#{@id}/Recipients/Subscribed", params: params)
       end
-      
+
       # Retrieve unsubscribed recipients in the specified list.
       #
       # @param [Hash] params Optional params or filters:
@@ -232,7 +232,7 @@ module MailUp
       #   * TotalElementsCount [Integer]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-GetUnsubscribedRecipientsByList
-      # 
+      #
       # @example
       #
       #   unsubscribed = mailup.console.list(2).unsusbcribed
@@ -246,7 +246,7 @@ module MailUp
       def unsubscribed(params = {})
         @api.get("#{@api.path}/List/#{@id}/Recipients/Unsubscribed", params: params)
       end
-      
+
       # Import multiple recipients to a list.
       #
       # @param [Array<Hash>] recipients An array of Recipients.
@@ -264,7 +264,7 @@ module MailUp
       def import_recipients(recipients)
         @api.post("#{@api.path}/List/#{@id}/Recipients", body: recipients)
       end
-      
+
       # Subscribe a recipient from the specified list.
       #
       # @param [Integer] recipient_id The ID of the recipient.
@@ -281,7 +281,7 @@ module MailUp
       def subscribe(recipient_id)
         @api.post("#{@api.path}/List/#{@id}/Subscribe/#{recipient_id}")
       end
-      
+
       # Unsubscribe a recipient in the specified list.
       #
       # @param [Integer] recipient_id The ID of the recipient.
@@ -298,7 +298,7 @@ module MailUp
       def unsubscribe(recipient_id)
         @api.delete("#{@api.path}/List/#{@id}/Unsubscribe/#{recipient_id}")
       end
-      
+
       # Get the enabled tag list for the specified list id.
       #
       # @param [Hash] params Optional params or filters:
@@ -329,7 +329,7 @@ module MailUp
         @api.get("#{@api.path}/List/#{@id}/Tags", params: params)
       end
       alias_method :enabled_tags, :tags
-      
+
       # Add a new tag in the specified list.
       #
       # @param [String] name The name of the tag to create.
@@ -340,7 +340,7 @@ module MailUp
       #   * Enabled [Boolean]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-CreateTag
-      # 
+      #
       # @example
       #
       #   new_tag = mailup.console.list(2).add_tag("My New Tag")
@@ -348,7 +348,7 @@ module MailUp
       def add_tag(tag)
         @api.post("#{@api.path}/List/#{@id}/Tag", body: tag)
       end
-      
+
       # Update a tag in the specified list.
       #
       # @param [Hash] tag A hash of tag attributes:
@@ -376,7 +376,7 @@ module MailUp
       def update_tag(tag_id, tag)
         @api.put("#{@api.path}/List/#{@id}/Tag/#{tag_id}", body: tag)
       end
-      
+
       # Delete a tag from the specified list.
       #
       # @param [Integer] idTag The ID of the tag to delete.
@@ -393,7 +393,7 @@ module MailUp
       def delete_tag(tag_id)
         @api.delete("#{@api.path}/List/#{@id}/Tag/#{tag_id}")
       end
-      
+
       # Get the attachment list for the specific message.
       #
       # @param [Integer] message_id The ID of the message.
@@ -419,7 +419,7 @@ module MailUp
       def attachments(message_id, params = {})
         @api.get("#{@api.path}/List/#{@id}/Email/#{message_id}/Attachment", params: params)
       end
-      
+
       # Add an attachment to the specified message.
       #
       # @param [Integer] message_id The ID of the message.
@@ -434,7 +434,7 @@ module MailUp
       #   * Path [String]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-AddMessageAttachments
-      # 
+      #
       # @example
       #
       #   attachment = {
@@ -448,7 +448,7 @@ module MailUp
       def add_attachment(message_id, slot, attachment)
         @api.post("#{@api.path}/List/#{@id}/Email/#{message_id}/Attachment/#{slot}", body: attachment)
       end
-      
+
       # Delete an attachment from the specified message.
       #
       # @param [Integer] message_id The ID of the message.
@@ -466,7 +466,7 @@ module MailUp
       def delete_attachment(message_id, slot)
         @api.delete("#{@api.path}/List/#{@id}/Email/#{message_id}/#{slot}")
       end
-      
+
       # Get all the images for the specified list.
       #
       # @param [Hash] params Optional params or filters:
@@ -488,7 +488,7 @@ module MailUp
       def images(params = {})
         @api.get("#{@api.path}/List/#{@id}/Images", params: params)
       end
-      
+
       # Add a new image to the specified mailing list.
       #
       # @param [Hash] image A hash of Image attributes.
@@ -498,7 +498,7 @@ module MailUp
       # @return [String] the created Image URL.
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-AddListImage
-      # 
+      #
       # @example
       #
       #   image = {
@@ -511,7 +511,7 @@ module MailUp
       def add_image(image)
         @api.post("#{@api.path}/List/#{@id}/Images", body: image)
       end
-      
+
       # Create an email message in the specified list id from template.
       #
       # @param [Integer] template_id The ID of the template.
@@ -522,7 +522,7 @@ module MailUp
       #   * Subject [String]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-CreateEmailMessageFromTemplate
-      # 
+      #
       # @example
       #
       #   new_message = mailup.console.list(2).add_message_from_template(5)
@@ -532,7 +532,7 @@ module MailUp
       def add_message_from_template(template_id)
         @api.post("#{@api.path}/List/#{@id}/Email/Template/#{template_id}")
       end
-      
+
       # Create an email message in the specified list id.
       #
       # @param [Hash] message A hash of Message attributes:
@@ -550,7 +550,7 @@ module MailUp
       #   * Subject [String]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-CreateEmailMessage
-      # 
+      #
       # @example
       #
       #   new_message = mailup.console.list(2).add_message(message)
@@ -560,7 +560,7 @@ module MailUp
       def add_message(message)
         @api.post("#{@api.path}/List/#{@id}/Email", body: message)
       end
-      
+
       # Modify an email message in the specified list id.
       #
       # @param [Integer] message_id The ID of the message.
@@ -579,7 +579,7 @@ module MailUp
       #   * Subject [String]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-UpdateEmailMessage
-      # 
+      #
       # @example
       #
       #   update = mailup.console.list(2).update_message(5, message)
@@ -589,7 +589,7 @@ module MailUp
       def update_message(message_id, message)
         @api.put("#{@api.path}/List/#{@id}/Email/#{message_id}", body: message)
       end
-      
+
       # Modify the email message online visibility.
       #
       # @param [Integer] message_id The ID of the message.
@@ -598,7 +598,7 @@ module MailUp
       # @return [Boolean] `true` if successful.
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-UpdateOnlineEmailMessageVisibility
-      # 
+      #
       # @example
       #
       #   update = mailup.console.list(2).update_message_visibility(5, true)
@@ -607,7 +607,7 @@ module MailUp
       def update_message_visibility(message_id, visibility)
         @api.put("#{@api.path}/List/#{@id}/Email/#{message_id}/Online/Visibility", body: visibility)
       end
-      
+
       # Delete an email message from the specified list id.
       #
       # @param [Integer] message_id The ID of the message.
@@ -624,7 +624,7 @@ module MailUp
       def delete_message(message_id)
         @api.delete("#{@api.path}/List/#{@id}/Email/#{message_id}")
       end
-      
+
       # Retrieve the email message details by specified id.
       #
       # @param [Integer] message_id The ID of the message.
@@ -651,7 +651,7 @@ module MailUp
       def message_details(message_id)
         @api.get("#{@api.path}/List/#{@id}/Email/#{message_id}")
       end
-      
+
       # Retrieve email messages (cloned and uncloned) for this list.
       #
       # @param [Hash] params Optional params or filters:
@@ -683,7 +683,7 @@ module MailUp
       def emails(params = {})
         @api.get("#{@api.path}/List/#{@id}/Emails", params: params)
       end
-      
+
       # Retrieve the email messages visible online through the website by the specified list id.
       #
       # @param [Hash] params Optional params or filters:
@@ -748,7 +748,7 @@ module MailUp
       def archived_emails(params = {})
         @api.get("#{@api.path}/List/#{@id}/Archived/Emails", params: params)
       end
-      
+
       # Get email message send history.
       #
       # @param [Integer] message_id The ID of the message.
@@ -777,7 +777,7 @@ module MailUp
       def send_history(message_id, params = {})
         @api.get("#{@api.path}/List/#{@id}/Email/#{message_id}/SendHistory", params: params)
       end
-      
+
       # Send an email message to the recipients in the specified list.
       #
       # @param [Integer] message_id The ID of the list.
@@ -799,7 +799,7 @@ module MailUp
       def send_message(message_id)
         @api.post("#{@api.path}/List/#{@id}/Email/#{message_id}/Send")
       end
-      
+
       # Retrieve the list of the current defined message templates in the specified list.
       #
       # @param [Hash] params Optional params or filters:
@@ -829,7 +829,7 @@ module MailUp
       def templates(params = {})
         @api.get("#{@api.path}/List/#{@id}/Templates", params: params)
       end
-      
+
       # Retrieve the details for the specified message template in the specified list.
       #
       # @param [Integer] template_id The ID of the template.
@@ -857,7 +857,7 @@ module MailUp
       def template_details(template_id)
         @api.get("#{@api.path}/List/#{@id}/Templates/#{template_id}")
       end
-        
+
     end
   end
 end
