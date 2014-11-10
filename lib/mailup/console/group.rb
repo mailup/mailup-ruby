@@ -4,8 +4,8 @@ module MailUp
       attr_accessor :api
 
       def initialize(id, api)
-          @api = api
-          @id = id
+        @api = api
+        @id = id
       end
 
       # Async Import recipients to the specified group.
@@ -19,9 +19,9 @@ module MailUp
       def add_recipients(recipients)
         @api.post("#{@api.path}/Group/#{@id}/Recipients", body: recipients)
       end
-      
+
       # Retrieve the recipients in the specified group.
-      # 
+      #
       # @param [Hash] params Optional params or filters:
       # @option params [Integer] :pageNumber The page number to return.
       # @option params [Integer] :pageSize The number of results to per page.
@@ -37,7 +37,7 @@ module MailUp
       #   * TotalElementsCount [Integer]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-GetRecipientsByGroup
-      # 
+      #
       # @example
       #
       #   recipients = mailup.console.group(5).recipients
@@ -49,7 +49,7 @@ module MailUp
       def recipients(params = {})
         @api.get("#{@api.path}/Group/#{@id}/Recipients", params: params)
       end
-      
+
       # Subscribe the recipient with the related id to the specified group.
       #
       # @param [Integer] recipient_id The ID of the recipient.
@@ -66,7 +66,7 @@ module MailUp
       def subscribe(recipient_id)
         @api.post("#{@api.path}/Group/#{@id}/Subscribe/#{recipient_id}")
       end
-      
+
       # Unsubscribe the recipient with the related id from the specified group.
       #
       # @param [Integer] recipient_id The ID of the recipient.
@@ -83,7 +83,7 @@ module MailUp
       def unsubscribe(recipient_id)
         @api.delete("#{@api.path}/Group/#{@id}/Unsubscribe/#{recipient_id}")
       end
-      
+
       # Send email message to all recipient in group.
       #
       # @param [Integer] message_id of the message.
