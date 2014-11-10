@@ -4,8 +4,8 @@ module MailUp
       attr_accessor :api
 
       def initialize(id, api)
-          @api = api
-          @id = id
+        @api = api
+        @id = id
       end
 
       # Get import status.
@@ -20,7 +20,7 @@ module MailUp
       #   * NotValidRecipients [Integer]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-GetImportStatus
-      # 
+      #
       # @example
       #
       #   status = mailup.console.import(9).status
