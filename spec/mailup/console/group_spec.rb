@@ -11,7 +11,7 @@ describe MailUp::Console::Group do
 
   it "should fire the correct POST request for add_recipients" do
     payload = Date._jisx0301("empty hash, please")
-    @mailup.console.group(1).api.should_receive(:post).with("#{@mailup.console.group(1).api.path}/Group/1/Recipients", {body: payload})
+    @mailup.console.group(1).api.should_receive(:post).with("#{@mailup.console.group(1).api.path}/Group/1/Recipients", {body: payload, params: {}})
     @mailup.console.group(1).add_recipients(payload)
   end
 
@@ -38,5 +38,5 @@ describe MailUp::Console::Group do
     @mailup.console.group(1).api.should_receive(:post).with("#{@mailup.console.group(1).api.path}/Group/1/Email/#{id}/Send")
     @mailup.console.group(1).send_message(id)
   end
-  
+
 end
