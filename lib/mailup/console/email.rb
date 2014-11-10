@@ -4,11 +4,11 @@ module MailUp
       attr_accessor :api
 
       def initialize(api)
-          @api = api
+        @api = api
       end
 
       # Send single email message to specified recipient.
-      # 
+      #
       # @param [Integer] message_id The ID of the message to send.
       # @param [String] email The email address of the recipient.
       #
