@@ -256,7 +256,10 @@ module MailUp
       #   * MobilePrefix [String]
       #   * MobileNumber [String]
       #   * Fields [Array]
+      #
+      # @param [Hash] params Optional params or filters:
       # @option params [Boolean] :ConfirmEmail Confirmed opt-in option. Default false.
+      # @option params [String] :importType By setting as 'asOptout' allows you to "import as unsubscribed" a list of specified recipients.
       #
       # @return [Integer] The number of imported recipients.
       #
