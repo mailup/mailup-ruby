@@ -18,6 +18,13 @@ RSpec.configure do |config|
 
   # Global hooks
   config.before(:each) { init_credentials}
+
+  config.mock_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
+  config.expect_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
 end
 
 # Create Credentials Hash
