@@ -33,11 +33,11 @@ module MailUp
         @api.get("#{@api.path}/Import/#{@id}")
       end
 
-      # Send Confirmation Email.
+      # Get Sending Confirmation Email Id.
       #
       # @see http://help.mailup.com/display/mailupapi/Recipients#Recipients-SendConfirmationEmail
       #
-      def send_confirmation_email
+      def confirmation_email_id
         @api.get("#{@api.path}/Import/#{@id}/Sending")
       end
 
