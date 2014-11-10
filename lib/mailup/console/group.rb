@@ -8,6 +8,18 @@ module MailUp
         @id = id
       end
 
+      # Import a recipient to the specified group(synchronous import).
+      #
+      # @param [Hash] recipient data, see ConsoleRecipientItems (See http://help.mailup.com/display/mailupapi/Models+v1.1#Modelsv1.1-ConsoleRecipientItem).
+      # @param [Hash] params Optional params or filters:
+      # @option params [Boolean] :ConfirmEmail Confirmed opt-in option. Default false.
+      #
+      # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-AsyncImportRecipientsToGroup
+      #
+      def add_recipient(recipient, params = {})
+        @api.post("#{@api.path}/Group/#{@id}/Recipient", body: recipient, params: params)
+      end
+
       # Async Import recipients to the specified group.
       #
       # @param [Array] recipients an array ConsoleRecipientItems (See http://help.mailup.com/display/mailupapi/Models+v1.1#Modelsv1.1-ConsoleRecipientItem).
