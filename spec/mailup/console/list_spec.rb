@@ -73,6 +73,12 @@ describe MailUp::Console::List do
     @mailup.console.list(1).send(:import_recipients, payload)
   end
 
+  it "should fire the correct POST request for import_recipient" do
+    payload = Date._jisx0301("empty hash, please")
+    @mailup.console.list(1).api.should_receive(:post).with("#{@mailup.console.list(1).api.path}/List/1/Recipient", {body: payload, params: {}})
+    @mailup.console.list(1).send(:import_recipient, payload)
+  end
+
   it "should fire the correct POST request for import_recipients and email optin" do
     payload = Date._jisx0301("empty hash, please")
     @mailup.console.list(1).api.should_receive(:post).with("#{@mailup.console.list(1).api.path}/List/1/Recipients",

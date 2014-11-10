@@ -4,8 +4,8 @@ module MailUp
       attr_accessor :api
 
       def initialize(id, api)
-          @api = api
-          @id = id
+        @api = api
+        @id = id
       end
 
       # Retrieve groups for the specified list
@@ -245,6 +245,28 @@ module MailUp
       #
       def unsubscribed(params = {})
         @api.get("#{@api.path}/List/#{@id}/Recipients/Unsubscribed", params: params)
+      end
+
+      # Import a single recipient to a list(synchronous import).
+      #
+      # @param [Hash] recipients An array of Recipients.
+      #   * idRecipient [Integer] (optional)
+      #   * Name [String]
+      #   * Email [String]
+      #   * MobilePrefix [String]
+      #   * MobileNumber [String]
+      #   * Fields [Array]
+      #
+      # @param [Hash] params Optional params or filters:
+      # @option params [Boolean] :ConfirmEmail Confirmed opt-in option. Default false.
+      # @option params [String] :importType By setting as 'asOptout' allows you to "import as unsubscribed" a list of specified recipients.
+      #
+      # @return [Integer] The number of imported recipients.
+      #
+      # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-AsyncImportRecipientsToList
+      #
+      def import_recipient(recipient, params = {})
+        @api.post("#{@api.path}/List/#{@id}/Recipient", {params: params, body: recipient})
       end
 
       # Import multiple recipients to a list.
