@@ -807,6 +807,8 @@ module MailUp
       # Send an email message to the recipients in the specified list.
       #
       # @param [Integer] message_id The ID of the list.
+      # @param [Hash] params Optional params or filters:
+      # @option params [String] :datetime  date/time for a deferred sending(should be UTC).
       #
       # @return [JSON] A Send object with the following attributes:
       #   * idMessage [Integer]
@@ -822,8 +824,8 @@ module MailUp
       #   send['Sent']
       #   => 1794
       #
-      def send_message(message_id)
-        @api.post("#{@api.path}/List/#{@id}/Email/#{message_id}/Send")
+      def send_message(message_id, params = {})
+        @api.post("#{@api.path}/List/#{@id}/Email/#{message_id}/Send", params: params)
       end
 
       # Retrieve the list of the current defined message templates in the specified list.

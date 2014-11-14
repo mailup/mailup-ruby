@@ -125,7 +125,7 @@ describe MailUp::Console::List do
 
   it "should fire the correct POST request for send_message" do
     payload = rand(100).abs
-    @mailup.console.list(1).api.should_receive(:post).with("#{@mailup.console.list(1).api.path}/List/1/Email/#{payload}/Send")
+    @mailup.console.list(1).api.should_receive(:post).with("#{@mailup.console.list(1).api.path}/List/1/Email/#{payload}/Send", {params: {}})
     @mailup.console.list(1).send_message(payload)
   end
 
