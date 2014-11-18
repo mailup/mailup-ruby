@@ -49,9 +49,10 @@ module MailUp
       # Sets up a mailing for scheduled delivery
       #
       # @param [Integer] Id Sending.
+      # @param [String] :Date  date/time for a deferred sending(should be UTC).
       #
-      def send_deferred_confirmation(sending_id)
-        @api.post("#{@api.path}/Email/Sendings/#{sending_id}/Deferred")
+      def send_deferred_confirmation(sending_id, date = nil)
+        @api.post("#{@api.path}/Email/Sendings/#{sending_id}/Deferred", body: {'Date' => date})
       end
 
       # Retrieves the list of email messages that are currently queued up for "immediate sending".
