@@ -38,8 +38,8 @@ module MailUp
       #   trial['id']
       #   => 1329874
       #
-      def new(account = {})
-        @api.post("#{@api.path}/Console/TrialActivation", body: account)
+      def activate_trial(account = {})
+        @api.provisioning_request("#{@api.path}/Console/TrialActivation", account)
       end
 
       # Retrieve the information about current trial activation status.
@@ -67,7 +67,7 @@ module MailUp
       #   => "Status description..."
       #
       def status(account = {})
-        @api.post("#{@api.path}/Console/TrialActivationStatus", body: account)
+        @api.provisioning_request("#{@api.path}/Console/TrialActivationStatus", account)
       end
 
     end

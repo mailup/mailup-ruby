@@ -83,7 +83,7 @@ module MailUp
       #   list = mailup.console.list(2)
       #
       def public
-        Public.new @api
+        Public::Base.new @api
       end
 
       # Create a recipient object
