@@ -1,5 +1,8 @@
 require 'oauth2'
 require 'multi_json'
+require "net/https"
+require 'json'
+require "uri"
 
 require 'mailup/version'
 require 'mailup/errors'
@@ -19,7 +22,7 @@ require 'mailup/stats/recipient'
 
 module MailUp
   class API
-    attr_accessor :access_token, :debug, :host, :path
+    attr_accessor :access_token, :debug, :host, :path, :credentials
 
     # Initialize a new (thread-safe) API instance.
     #
@@ -49,6 +52,7 @@ module MailUp
       @debug = debug
       @host = 'https://services.mailup.com'
       @path = ''
+      @credentials = credentials
 
       # Validate the credentials
       raise Error.new, 'MailUp credentials missing' if credentials.nil? or !credentials.is_a?(Hash)
@@ -101,6 +105,25 @@ module MailUp
         # Handle the response
         handle_response(req)
       end
+    end
+
+    # Make a request with for Provisioning Calls.
+    #
+    # @param [Symbol] verb the HTTP request method
+    # @param [String] path the HTTP URL path of the request
+    # @param [Hash] opts the options to make the request with
+    #
+    def provisioning_request(path, body = nil) # :nodoc:
+      uri = URI.parse(@host)
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+      req = Net::HTTP::Post.new(path, initheader = {'Content-Type' =>'application/json'})
+      req.basic_auth @credentials[:client_id], @credentials[:client_secret]
+      req.body = body.to_json
+
+      http.request(req).body.to_json
     end
 
     # Make a GET request with the Access Token
