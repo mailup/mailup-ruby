@@ -61,8 +61,8 @@ module MailUp
       #   fields['Items'].first['Description']
       #   => "Field description..."
       #
-      def fields
-        @api.get("#{@api.path}/Recipient/DynamicFields")
+      def fields(params = {})
+        @api.get("#{@api.path}/Recipient/DynamicFields", params: params)
       end
       
     end
