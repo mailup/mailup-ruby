@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.name          = "mailup"
   gem.version       = MailUp::VERSION
   gem.platform      = Gem::Platform::RUBY
-  gem.authors       = ["Brian Getting"]
+  gem.authors       = ["Brian Getting", "Rocco Galluzzo"]
   gem.email         = ["brian@tatem.ae"]
   gem.homepage      = "https://github.com/mailup/mailup-ruby"
   gem.summary       = "Ruby wrapper for the MailUp REST API"
