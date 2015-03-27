@@ -12,6 +12,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = "https://github.com/mailup/mailup-ruby"
   gem.summary       = "Ruby wrapper for the MailUp REST API"
   gem.description   = "A Ruby gem for interacting with the MailUp REST API."
+  gem.licenses    = ['MIT']
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
