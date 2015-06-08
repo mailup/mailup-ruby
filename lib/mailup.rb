@@ -117,7 +117,7 @@ module MailUp
       uri = URI.parse(@host)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      http.verify_mode = OpenSSL::SSL::VERIFY_PEER
 
       req = Net::HTTP::Post.new(path, initheader = {'Content-Type' =>'application/json'})
       req.basic_auth @credentials[:client_id], @credentials[:client_secret]
