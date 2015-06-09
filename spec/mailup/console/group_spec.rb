@@ -41,7 +41,7 @@ describe MailUp::Console::Group do
 
   it "should fire the correct POST request for send_message" do
     id = rand(100).abs
-    @mailup.console.group(1).api.should_receive(:post).with("#{@mailup.console.group(1).api.path}/Group/1/Email/#{id}/Send")
+    @mailup.console.group(1).api.should_receive(:post).with("#{@mailup.console.group(1).api.path}/Group/1/Email/#{id}/Send", {params: {}})
     @mailup.console.group(1).send_message(id)
   end
 
