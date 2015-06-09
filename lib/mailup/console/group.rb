@@ -99,6 +99,8 @@ module MailUp
       # Send email message to all recipient in group.
       #
       # @param [Integer] message_id of the message.
+      # @param [Hash] params Optional params or filters:
+      # @option params [String] :datetime  date/time for a deferred sending(should be UTC).
       #
       # @return [JSON] A Send object with the following attributes:
       #   * idMessage [Integer]
@@ -114,8 +116,8 @@ module MailUp
       #   send['Sent']
       #   => 1794
       #
-      def send_message(message_id)
-        @api.post("#{@api.path}/Group/#{@id}/Email/#{message_id}/Send")
+      def send_message(message_id, params = {})
+        @api.post("#{@api.path}/Group/#{@id}/Email/#{message_id}/Send", params: params)
       end
 
     end
