@@ -905,7 +905,7 @@ module MailUp
       def update_list(params={})
         update_params = params
         update_params['IdList'] = @id
-        @api.put("#{@api.path}/User/List/#{@id}", params: update_params)
+        @api.put("#{@api.path}/User/List/#{@id}", body: update_params)
       end
 
     end
