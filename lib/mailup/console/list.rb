@@ -886,6 +886,28 @@ module MailUp
         @api.get("#{@api.path}/List/#{@id}/Templates/#{template_id}")
       end
 
+      # Update a list.
+      #
+      # @param [Hash] params to update a list
+      #
+      # @return [JSON] Results and data including:
+      #
+      #   * List Attributes [<Hash>]
+      #
+      # @see http://help.mailup.com/display/mailupapi/Manage+Lists+and+Groups#ManageListsandGroups-UpdateList
+      #
+      # @example
+      #
+      #   list = mailup.console.list(2).update_list({"Name":"New List Name"})
+      #   list['Name']
+      #   => "New List Name"
+      #
+      def update_list(params={})
+        update_params = params
+        update_params['IdList'] = @id
+        @api.put("#{@api.path}/User/List/#{@id}", params: update_params)
+      end
+
     end
   end
 end
