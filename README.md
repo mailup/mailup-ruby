@@ -46,7 +46,7 @@ mailup = MailUp::API.new(credentials)
 
 ### Console Methods
 
-Check out the [console methods API documentation](http://help.mailup.com/display/mailupapi/Console+methods+v1.1) for more information.
+Check out the [console methods API documentation](http://help.mailup.com/display/mailupapi/Standard+resources) for more information.
 
 ```ruby
 lists = mailup.console.user.lists
@@ -72,7 +72,7 @@ groups['Items'].size
 
 ### Email Statistics Methods
 
-Check out the [email statistics API documentation](http://help.mailup.com/display/mailupapi/Email+statistics+methods+v1.1) for more information.
+Check out the [email statistics API documentation](http://help.mailup.com/display/mailupapi/Email+Statistics) for more information.
 
 ```ruby
 views_count = mailup.stats.message(17).views_count
