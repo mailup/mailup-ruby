@@ -168,6 +168,13 @@ module MailUp
         raise BadRequest.new response.parsed
       when 401
         raise Unauthorized.new
+      when 403
+        case response.body
+        when /Too many requests/i
+          raise TooManyRequests.new
+        else
+          raise ClientError.new response.parsed
+        end
       when 404
         raise NotFound.new
       when 400...500
