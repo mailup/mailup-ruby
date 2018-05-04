@@ -37,6 +37,11 @@ describe MailUp::Console::List do
     @mailup.console.list(1).recipient_groups(2)
   end
 
+  it "should fire the correct DELETE request for delete_group_recipients" do
+    @mailup.console.list(1).api.should_receive(:delete).with("#{@mailup.console.list(1).api.path}/List/1/Group/1/Recipients")
+    @mailup.console.list(1).delete_group_recipients(1)
+  end
+
   it "should fire the correct GET request for attachments" do
     @mailup.console.list(1).api.should_receive(:get).with("#{@mailup.console.list(1).api.path}/List/1/Email/2/Attachment", {params: {}})
     @mailup.console.list(1).attachments(2)

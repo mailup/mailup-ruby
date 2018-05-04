@@ -151,6 +151,19 @@ module MailUp
         @api.get("#{@api.path}/List/#{@id}/Recipient/#{recipient_id}/Groups", params: params)
       end
 
+      # Delete all recipients in the specified group in this list
+      #
+      # @param [Integer] group_id The ID of the group.
+      #
+      # @return [JSON] Results and data including:
+      #   * Removed [Integer]
+      #
+      # @see http://help.mailup.com/display/mailupapi/Manage+Lists+and+Groups#ManageListsandGroups-Removerecipientsfromagroup(bulkremovalfromagroup)
+      #
+      def delete_group_recipients(group_id)
+        @api.delete("#{@api.path}/List/#{@id}/Group/#{group_id}/Recipients")
+      end
+
       # Retrieve pending recipients in the specified list.
       #
       # @param [Hash] params Optional params or filters:
