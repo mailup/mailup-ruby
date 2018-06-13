@@ -1,8 +1,8 @@
 require 'oauth2'
 require 'multi_json'
-require "net/https"
+require 'net/https'
 require 'json'
-require "uri"
+require 'uri'
 
 require 'mailup/version'
 require 'mailup/errors'
@@ -224,6 +224,5 @@ module MailUp
     def stats
       Stats::Base.new self
     end
-
   end
 end
