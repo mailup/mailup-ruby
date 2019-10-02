@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MailUp
   module Console
     class Group
@@ -119,7 +121,6 @@ module MailUp
       def send_message(message_id, params = {})
         @api.post("#{@api.path}/Group/#{@id}/Email/#{message_id}/Send", params: params)
       end
-
     end
   end
 end

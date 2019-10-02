@@ -1,18 +1,20 @@
+# frozen_string_literal: true
+
 module MailUp
   module Stats
     class Base
       attr_accessor :api
 
       def initialize(api) # :nodoc:
-          @api = api
-          @api.path = "/API/v#{MailUp::API_VERSION}/Rest/MailStatisticsService.svc"
+        @api = api
+        @api.path = "/API/v#{MailUp::API_VERSION}/Rest/MailStatisticsService.svc"
       end
 
       # Create a message object
-      # 
+      #
       # @param [Integer] id The message_id of the message to access.
       #
-      # @return [MailUp::Stats::Message] 
+      # @return [MailUp::Stats::Message]
       #
       # @example
       #
@@ -23,10 +25,10 @@ module MailUp
       end
 
       # Create a recipient object
-      # 
+      #
       # @param [Integer] id The recipient_id of the recipient to access.
       #
-      # @return [MailUp::Stats::Recipient] 
+      # @return [MailUp::Stats::Recipient]
       #
       # @example
       #
@@ -35,7 +37,6 @@ module MailUp
       def recipient(id)
         Recipient.new id, @api
       end
-
     end
   end
 end

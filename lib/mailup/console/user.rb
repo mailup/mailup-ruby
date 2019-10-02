@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 module MailUp
   module Console
     class User
       attr_accessor :api
 
       def initialize(api)
-          @api = api
+        @api = api
       end
 
       # Retrieve the admin console lists for the current user.
-      # 
+      #
       # @param [Hash] params Optional params or filters:
       # @option params [Integer] :pageNumber The page number to return.
       # @option params [Integer] :pageSize The number of results to per page.
@@ -39,9 +41,9 @@ module MailUp
       def lists(params = {})
         @api.get("#{@api.path}/User/Lists", params: params)
       end
-      
+
       # Retrieve the email messages (cloned and not cloned) for the current user.
-      # 
+      #
       # @param [Hash] params Optional params or filters:
       # @option params [Integer] :pageNumber The page number to return.
       # @option params [Integer] :pageSize The number of results to per page.
@@ -68,10 +70,9 @@ module MailUp
       #
       #   emails = mailup.console.user.emails(pageNumber: 0, pageSize: 1)
       #
-      def emails(params={})
+      def emails(params = {})
         @api.get("#{@api.path}/User/Emails", params: params)
       end
-
     end
   end
 end
