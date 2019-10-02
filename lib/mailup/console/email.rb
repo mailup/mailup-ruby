@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MailUp
   module Console
     class Email
@@ -27,7 +29,7 @@ module MailUp
       #   => 1
       #
       def send(message_id, email)
-        @api.post("#{@api.path}/Email/Send", body: {:idMessage => message_id, :Email => email})
+        @api.post("#{@api.path}/Email/Send", body: { idMessage: message_id, Email: email })
       end
 
       # Schedules a mailing for immediate sending
@@ -35,8 +37,8 @@ module MailUp
       # @param [Integer] Id Sending.
       #
       def send_immediate_confirmation(sending_id)
-       @api.post("#{@api.path}/Email/Sendings/#{sending_id}/Immediate")
-     end
+        @api.post("#{@api.path}/Email/Sendings/#{sending_id}/Immediate")
+      end
 
       # Retrieves the earliest date to schedule the given sending task.
       #
@@ -52,7 +54,7 @@ module MailUp
       # @param [String] :Date  date/time for a deferred sending(should be UTC).
       #
       def send_deferred_confirmation(sending_id, date = nil)
-        @api.post("#{@api.path}/Email/Sendings/#{sending_id}/Deferred", body: {'Date' => date})
+        @api.post("#{@api.path}/Email/Sendings/#{sending_id}/Deferred", body: { 'Date' => date })
       end
 
       # Retrieves the list of email messages that are currently queued up for "immediate sending".

@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 module MailUp
   module Console
     class Base
       attr_accessor :api
 
       def initialize(api) # :nodoc:
-          @api = api
-          @api.path = "/API/v#{MailUp::API_VERSION}/Rest/ConsoleService.svc/Console"
+        @api = api
+        @api.path = "/API/v#{MailUp::API_VERSION}/Rest/ConsoleService.svc/Console"
       end
 
       # Create an email object
       #
-      # @return [MailUp::Console::Email] 
+      # @return [MailUp::Console::Email]
       #
       # @example
       #
@@ -21,10 +23,10 @@ module MailUp
       end
 
       # Create a group object
-      # 
+      #
       # @param [Integer] id The group_id of the group to access.
       #
-      # @return [MailUp::Console::Group] 
+      # @return [MailUp::Console::Group]
       #
       # @example
       #
@@ -36,7 +38,7 @@ module MailUp
 
       # Create an images object
       #
-      # @return [MailUp::Console::Images] 
+      # @return [MailUp::Console::Images]
       #
       # @example
       #
@@ -45,12 +47,12 @@ module MailUp
       def images
         Images.new @api
       end
-      
+
       # Create an import object
-      # 
+      #
       # @param [Integer] idImport The ID of the import process.
       #
-      # @return [MailUp::Console::Import] 
+      # @return [MailUp::Console::Import]
       #
       # @example
       #
@@ -61,10 +63,10 @@ module MailUp
       end
 
       # Create a list object
-      # 
+      #
       # @param [Integer] id The list_id of the list to access.
       #
-      # @return [MailUp::Console::List] 
+      # @return [MailUp::Console::List]
       #
       # @example
       #
@@ -76,7 +78,7 @@ module MailUp
 
       # Create a public methods object
       #
-      # @return [MailUp::Console::List] 
+      # @return [MailUp::Console::List]
       #
       # @example
       #
@@ -88,7 +90,7 @@ module MailUp
 
       # Create a recipient object
       #
-      # @return [MailUp::Console::Recipient] 
+      # @return [MailUp::Console::Recipient]
       #
       # @example
       #
@@ -100,7 +102,7 @@ module MailUp
 
       # Create a user object
       #
-      # @return [MailUp::Console::User] 
+      # @return [MailUp::Console::User]
       #
       # @example
       #
@@ -109,7 +111,6 @@ module MailUp
       def user
         User.new @api
       end
-
     end
   end
 end

@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module MailUp
   module Stats
     class Recipient
       attr_accessor :api
 
       def initialize(id, api)
-          @api = api
-          @id = id
+        @api = api
+        @id = id
       end
 
       # Paged list of messages received by the specified recipient.
@@ -37,7 +39,7 @@ module MailUp
       def deliveries(params = {})
         @api.get("#{@api.path}/Recipient/#{@id}/List/Deliveries", params: params)
       end
-      
+
       # Count of messages received by the specified recipient.
       #
       #
@@ -53,7 +55,7 @@ module MailUp
       def deliveries_count
         @api.get("#{@api.path}/Recipient/#{@id}/Count/Deliveries")
       end
-      
+
       # Paged list of messages viewed by the specified recipient.
       #
       # @param [Hash] params Optional params or filters:
@@ -83,7 +85,7 @@ module MailUp
       def views(params = {})
         @api.get("#{@api.path}/Recipient/#{@id}/List/Views", params: params)
       end
-      
+
       # Count of messages viewed by the specified recipient.
       #
       #
@@ -99,7 +101,7 @@ module MailUp
       def views_count
         @api.get("#{@api.path}/Recipient/#{@id}/Count/Views")
       end
-      
+
       # Paged list of bounces with details returned by the specified recipient.
       #
       # @param [Hash] params Optional params or filters:
@@ -159,7 +161,7 @@ module MailUp
       def bounces(params = {})
         @api.get("#{@api.path}/Recipient/#{@id}/List/Bounces", params: params)
       end
-      
+
       # Count of bounces returned by the specified recipient.
       #
       #
@@ -175,7 +177,7 @@ module MailUp
       def bounces_count
         @api.get("#{@api.path}/Recipient/#{@id}/Count/Bounces")
       end
-      
+
       # Paged list of unsubscriptions done by the specified recipient.
       #
       # @param [Hash] params Optional params or filters:
@@ -205,7 +207,7 @@ module MailUp
       def unsubscribes(params = {})
         @api.get("#{@api.path}/Recipient/#{@id}/List/Unsubscriptions", params: params)
       end
-      
+
       # Count of unsubscriptions done by the specified recipient.
       #
       #
@@ -251,7 +253,7 @@ module MailUp
       def clicks_details(params = {})
         @api.get("#{@api.path}/Recipient/#{@id}/List/ClicksDetails", params: params)
       end
-      
+
       # Paged list of message clicks on a link done by the specified recipient.
       #
       # @param [Hash] params Optional params or filters:
@@ -281,7 +283,7 @@ module MailUp
       def clicks(params = {})
         @api.get("#{@api.path}/Recipient/#{@id}/List/Clicks", params: params)
       end
-      
+
       # Count of clicks on a link in the specified email.
       #
       #
@@ -297,7 +299,6 @@ module MailUp
       def clicks_count
         @api.get("#{@api.path}/Recipient/#{@id}/Count/Clicks")
       end
-
     end
   end
 end

@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 module MailUp
   module Public
     class Console
       attr_accessor :api
 
       def initialize(api)
-          @api = api
+        @api = api
       end
 
       # Create a new trial console.
-      # 
+      #
       # @param [Hash] account A hash of account attributes.
       # @option params [String] :NameAndSurname The company name.
       # @option params [String] :Email The email address for the trial account.
@@ -43,7 +45,7 @@ module MailUp
       end
 
       # Retrieve the information about current trial activation status.
-      # 
+      #
       # @param [Hash] account A hash of account attributes.
       # @option params [String] :Hash The Hash of the trial activation request.
       # @option params [Integer] :Id The Id of the trial activation request.
@@ -69,7 +71,6 @@ module MailUp
       def status(account = {})
         @api.provisioning_request("#{@api.path}/Console/TrialActivationStatus", account)
       end
-
     end
   end
 end

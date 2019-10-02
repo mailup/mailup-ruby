@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rubygems'
 require 'bundler/setup'
 require 'mailup'
@@ -17,24 +19,24 @@ RSpec.configure do |config|
   config.order = 'random'
 
   # Global hooks
-  config.before(:each) { init_credentials}
+  config.before(:each) { init_credentials }
 
   config.mock_with :rspec do |c|
-    c.syntax = [:should, :expect]
+    c.syntax = %i[should expect]
   end
   config.expect_with :rspec do |c|
-    c.syntax = [:should, :expect]
+    c.syntax = %i[should expect]
   end
 end
 
 # Create Credentials Hash
 def init_credentials
   @credentials = {
-    client_id: "1234",
-    client_secret: "1234",
+    client_id: '1234',
+    client_secret: '1234',
     oauth: {
-      token: "123",
-      refresh_token: "123",
+      token: '123',
+      refresh_token: '123',
       expires_at: 123
     }
   }

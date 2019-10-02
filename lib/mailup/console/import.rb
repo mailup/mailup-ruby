@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MailUp
   module Console
     class Import
@@ -40,7 +42,6 @@ module MailUp
       def confirmation_email_id
         @api.get("#{@api.path}/Import/#{@id}/Sending")
       end
-
     end
   end
 end

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module MailUp
   module Console
     class Images
       attr_accessor :api
 
       def initialize(api)
-          @api = api
+        @api = api
       end
 
       # Get the list of all shared images for the current console.
@@ -12,7 +14,7 @@ module MailUp
       # @return [Array<String>] An array of Image strings.
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-GetSharedImages
-      # 
+      #
       # @example
       #
       #   images = mailup.console.images.list
@@ -22,7 +24,7 @@ module MailUp
       def list
         @api.get("#{@api.path}/Images")
       end
-      
+
       # Add a new image to the shared images list.
       #
       # @param [Hash] image A hash of image attributes:
@@ -32,7 +34,7 @@ module MailUp
       # @return [Array] An array of Image strings.
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-AddSharedImage
-      # 
+      #
       # @example
       #
       #   image = {
@@ -44,9 +46,9 @@ module MailUp
       #   => 51
       #
       def add_image(image)
-        @api.post("#{@api.path}/Images", body:image)
+        @api.post("#{@api.path}/Images", body: image)
       end
-      
+
       # Delete the image corresponding to the provided full path name.
       #
       # @param [String] path The path of the image to delete.
@@ -54,7 +56,7 @@ module MailUp
       # @return [Boolean] `true` if successful.
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-DeleteImage
-      # 
+      #
       # @example
       #
       #   delete = mailup.console.images.delete_image("#{image_path}")
@@ -63,7 +65,6 @@ module MailUp
       def delete_image(path)
         @api.delete("#{@api.path}/Images", body: path.to_s)
       end
-      
     end
   end
 end

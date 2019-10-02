@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 module MailUp
   module Console
     class Recipient
       attr_accessor :api
 
       def initialize(api)
-          @api = api
+        @api = api
       end
 
       # Update a recipient with the specified details into address book.
-      # 
+      #
       # @param [Hash] recipient A hash of recipient attributes:
       # @option recipient [String] :Name of the recipient (required).
       # @option recipient [String] :Email of the recipient (required).
@@ -25,7 +27,7 @@ module MailUp
       #   * Fields [Array]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-UpdateRecipientDetail
-      # 
+      #
       # @example
       #
       #   recipient = {
@@ -40,9 +42,9 @@ module MailUp
       def update(recipient)
         @api.put("#{@api.path}/Recipient/Detail", body: recipient)
       end
-      
+
       # Retrieve recipient dynamic field definitions.
-      # 
+      #
       # @return [JSON] Results and data including:
       #   * IsPaginated [Boolean]
       #   * Items [Array<Hash>]
@@ -52,7 +54,7 @@ module MailUp
       #   * TotalElementsCount [Integer]
       #
       # @see http://help.mailup.com/display/mailupapi/Console+methods+v1.1#Consolemethodsv1.1-GetDynamicFields
-      # 
+      #
       # @example
       #
       #   fields = mailup.console.recipient.fields
@@ -64,7 +66,6 @@ module MailUp
       def fields(params = {})
         @api.get("#{@api.path}/Recipient/DynamicFields", params: params)
       end
-      
     end
   end
 end

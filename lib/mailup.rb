@@ -1,8 +1,8 @@
 require 'oauth2'
 require 'multi_json'
-require "net/https"
+require 'net/https'
 require 'json'
-require "uri"
+require 'uri'
 
 require 'mailup/version'
 require 'mailup/errors'
@@ -48,19 +48,21 @@ module MailUp
     #   }
     #   mailup = MailUp::API.new(credentials)
     #
-    def initialize(credentials=nil, debug=false)
+    def initialize(credentials = nil, debug = false)
       @debug = debug
       @host = 'https://services.mailup.com'
       @path = ''
       @credentials = credentials
 
       # Validate the credentials
-      raise Error.new, 'MailUp credentials missing' if credentials.nil? or !credentials.is_a?(Hash)
-      [:client_id, :client_secret, :oauth].each do |key|
-        raise Error.new, "MailUp credentials must include a #{key.to_s} key" unless credentials.has_key?(key)
+      raise Error.new, 'MailUp credentials missing' if credentials.nil? || !credentials.is_a?(Hash)
+
+      %i[client_id client_secret oauth].each do |key|
+        raise Error.new, "MailUp credentials must include a #{key} key" unless credentials.has_key?(key)
       end
       raise Error.new, 'MailUp credentials :oauth must be a hash' unless credentials[:oauth].is_a?(Hash)
-      [:token, :refresh_token, :expires_at].each do |key|
+
+      %i[token refresh_token expires_at].each do |key|
         raise Error.new, "MailUp credentials :oauth hash must include a #{key.to_s} key" unless credentials[:oauth].has_key?(key)
       end
 
@@ -69,8 +71,8 @@ module MailUp
         credentials[:client_id],
         credentials[:client_secret],
         site: @host,
-        authorize_url: "/Authorization/OAuth/LogOn",
-        token_url: "/Authorization/OAuth/Token",
+        authorize_url: '/Authorization/OAuth/LogOn',
+        token_url: '/Authorization/OAuth/Token',
         raise_errors: @debug
       )
 
@@ -92,19 +94,19 @@ module MailUp
     # @param [Hash] opts the options to make the request with
     #
     def request(method, path, opts={}, &block) # :nodoc:
-      unless @access_token == nil
-        # Refresh token if needed
-        @access_token = @access_token.refresh! if @access_token.expired?
-        # Ensure the body is JSON
-        opts[:body] = MultiJson.dump(opts[:body]) if opts[:body]
-        # Set the headers
-        opts[:headers] ||= {}
-        opts[:headers].merge!(headers)
-        # Make the request
-        req = @access_token.send(method, path, opts)
-        # Handle the response
-        handle_response(req)
-      end
+      return if @access_token.nil?
+
+      # Refresh token if needed
+      @access_token = @access_token.refresh! if @access_token.expired?
+      # Ensure the body is JSON
+      opts[:body] = MultiJson.dump(opts[:body]) if opts[:body]
+      # Set the headers
+      opts[:headers] ||= {}
+      opts[:headers].merge!(headers)
+      # Make the request
+      req = @access_token.send(method, path, opts)
+      # Handle the response
+      handle_response(req)
     end
 
     # Make a request with for Provisioning Calls.
@@ -119,7 +121,7 @@ module MailUp
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_PEER
 
-      req = Net::HTTP::Post.new(path, initheader = {'Content-Type' =>'application/json'})
+      req = Net::HTTP::Post.new(path, initheader = { 'Content-Type' => 'application/json' })
       req.basic_auth @credentials[:client_id], @credentials[:client_secret]
       req.body = body.to_json
 
@@ -224,6 +226,5 @@ module MailUp
     def stats
       Stats::Base.new self
     end
-
   end
 end

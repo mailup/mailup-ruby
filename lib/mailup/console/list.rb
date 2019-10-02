@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MailUp
   module Console
     class List
@@ -907,7 +909,6 @@ module MailUp
         update_params['IdList'] = @id
         @api.put("#{@api.path}/User/List/#{@id}", body: update_params)
       end
-
     end
   end
 end
